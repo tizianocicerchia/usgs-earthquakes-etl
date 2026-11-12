@@ -1,18 +1,20 @@
 import os 
 import requests
 
-raw_dir = "raw"
+RAW_DIR = "raw"
 URL = "https://earthquake.usgs.gov/fdsnws/event/1/query"
+DEFAULT_PARAMS = {"format": "geojson", "minmagnitude": 2.5, "limit": 500}
 
-params = {"format": "geojson", "starttime": "2026-10-31", "minmagnitude": 2.5, "limit": 500}
 
 def extract_and_save(params, file_name):
+    if params is None:
+        params = DEFAULT_PARAMS
 
     response = requests.get(URL, params=params, timeout=30)
     response.raise_for_status()
 
-    os.makedirs(raw_dir, exist_ok=True)
-    path_to_file = os.path.join(raw_dir, file_name)
+    os.makedirs(RAW_DIR, exist_ok=True)
+    path_to_file = os.path.join(RAW_DIR, file_name)
     with open(path_to_file, "w", encoding = "utf-8") as f:
         f.write(response.text)
 
