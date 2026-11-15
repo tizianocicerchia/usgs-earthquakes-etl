@@ -1,6 +1,9 @@
 import datetime as dt
 import sqlite3
 from pathlib import Path
+import logging
+
+logger = logging.getLogger(__name__)
 
 SCHEMA_PATH = Path(__file__).parent / "schema.sql" 
 DEFAULT_LOOKBACK_DAYS = 7
@@ -80,6 +83,7 @@ def finish_run(conn, run_id, status, counts=None, error=None):
 # Upsert rows in a single transaction. Returns the counters for etl_runs
 def upsert_events(conn, rows):
     if not rows:
+        logger.info("No events to load")
         return {"extracted": 0, "inserted": 0, "updated": 0, "skipped": 0}
 
     with conn:  # commit on success, rollback on exception

@@ -6,6 +6,7 @@ comm==0.2.3
 debugpy==1.8.22
 executing==2.3.0
 idna==3.20
+iniconfig==2.3.1
 ipykernel==7.4.0
 ipython==9.18.1
 ipython_pygments_lexers==1.1.1
@@ -16,13 +17,16 @@ matplotlib-inline==0.2.2
 nest-asyncio2==1.7.4
 packaging==26.3
 parso==0.8.7
+pathlib==1.0.1
 pexpect==4.9.0
 platformdirs==4.14.5
+pluggy==1.7.0
 prompt_toolkit==3.0.53
 psutil==7.2.2
 ptyprocess==0.7.0
 pure_eval==0.2.4
 Pygments==2.21.0
+pytest==9.2.0
 python-dateutil==4.0.0
 pyzmq==27.3.0
 requests==2.34.2

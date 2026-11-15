@@ -3,3 +3,7 @@ __pycache__/
 *.db
 *.log
 raw/
+.DS_Store
+.pytest_cache/
+scratch/
+logs/
