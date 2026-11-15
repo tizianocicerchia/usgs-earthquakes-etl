@@ -4,7 +4,7 @@ def milliseconds_to_iso(ms):
     if ms is None:
         return None
     seconds = ms / 1000
-    date_iso = dt.datetime.fromtimestamp(seconds, tz=dt.timezone.utc).isoformat()
+    date_iso = dt.datetime.fromtimestamp(seconds, tz=dt.timezone.utc).isoformat(timespec="milliseconds")
     return date_iso
 
 
