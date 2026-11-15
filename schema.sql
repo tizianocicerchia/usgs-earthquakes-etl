@@ -19,15 +19,15 @@ CREATE INDEX IF NOT EXISTS idx_earthquakes_updated    ON earthquakes (updated);
 
 
 CREATE TABLE IF NOT EXISTS etl_runs (
-    run_id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    started_at      TEXT NOT NULL,
-    finished_at     TEXT,
-    status          TEXT NOT NULL CHECK (status IN ('running', 'success', 'failed')),
-    watermark_used  TEXT,
-    rows_extracted  INTEGER,   
-    rows_inserted   INTEGER,   
-    rows_updated    INTEGER,   
-    rows_skipped    INTEGER,   
-    error_message   TEXT
+    run_id             INTEGER PRIMARY KEY AUTOINCREMENT,
+    started_at         TEXT NOT NULL,
+    finished_at        TEXT,
+    status             TEXT NOT NULL CHECK (status IN ('running', 'success', 'failed')),
+    updatedafter_used  TEXT,
+    rows_extracted     INTEGER,
+    rows_inserted      INTEGER,
+    rows_updated       INTEGER,
+    rows_skipped       INTEGER,
+    error_message      TEXT
 );
 
