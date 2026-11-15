@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS earthquakes (
     lat         REAL CHECK (lat BETWEEN -90 AND 90),
     lon         REAL CHECK (lon BETWEEN -180 AND 180),
     depth       REAL,
-    loaded_at   TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%S+00:00', 'now'))
+    loaded_at TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%f+00:00', 'now'))
 );
     
 
