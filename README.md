@@ -112,14 +112,9 @@ Automated tests currently cover the transform stage (timestamp conversion, flatt
 - **No pagination, and no explicit guard against truncation.** The API limits a single query to 20,000 events and the pipeline makes one request per run. With the small time windows used here (a few hundred events per day) this does not happen, but a run that needed more events could fail or return a truncated result, and since the watermark moves forward, the missing events could be skipped.
 - **Filters apply to the current version of an event.** If an event is revised from magnitude 2.6 to 2.4, the API stops returning it when `minmagnitude=2.5`, and the database keeps the old version. Events deleted by USGS are not removed from the database either.
 - **No retries**: a transient network error fails the run, which is picked up again at the next execution (the watermark has not moved).
-- **The load stage has no automated tests yet**; it was verified manually as described above.
+- **The load stage has no automated tests yet**.
 - **Parameters are set in the code** (`pipeline.py`, `load.py`), not from the command line.
 
-## Possible improvements
-
-- Guard against truncated results, then proper pagination with `offset`.
-- Automated tests for the load stage (upsert counters, rollback, run tracking) and for the extract stage with a mocked API.
-- Command-line arguments (minimum magnitude, look-back days, database path).
 
 ## Project structure
 
